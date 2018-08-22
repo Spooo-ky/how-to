@@ -1,7 +1,7 @@
 # Spoooky Basics
 Spoooky is a Instant HTML Personalisation Service. It allows to create content very similar to what `Mail Merge` does with email, but with Presentations, Websites, Landing Pages, Videos & Ads. It then shares with you a summary of all the viewers that have accessed your content for marketing and follow up purposes.
 
-It essentially replaces {{paramters}} placed in the HTML content, with personalised variables you feed it. 
+It essentially replaces {{parameters}} placed in the HTML content, with personalised variables you feed it. 
 
 ## URL Variables
 The easiest and most dynamic way to feeding Spoooky with dynamic content is the use of URL Variables. IF you are familiar with Google Analytics Tracking links `?utm_campaign=something&utm_medium=somethingElse`, this will be very natural to you. You can ammend any custom variable to the urls you send to your correspondents `?shoesize=44&height=194cm&favorite_color=yellow` and use them to customise the content they see. Spoooky variables and other variables play along nicely.
@@ -27,6 +27,7 @@ All other variables you add by the means of URL Variables will be used in the Pe
 
 # Sample Markup
 To identify variables we enclose them with `{{ }}` so the for the url: 
+
 https://yourwebsite.com/?fname=John&lname=Doe&jobtitle=CEO&company=Spoooky&website=spooo.ky
 
 We would place the variables in the content like:
@@ -153,8 +154,27 @@ auth_color=
 Besides adding Flags and Vars via the URL, you can also add them as script attributes.
 `<script src=“https://api.spooo.ky/bit.js?api_key=XXX” data-set-auth_skip="no" data-set-auth_login="FL"></script>`
 > This way you can prevent URLs becoming very, very, very long. :)
-So: `data-set-[any_var_name]="any_value"` pattern works as default var setter
+So: `data-set-[any_var_name]="any_value"` attribute works as default var setter
 
 When both URL variables and script attributes are used, keep it mind:
 `URL Variables` overwrite `Script Attributes` overwrite `Spoooky Defaults`
 
+## Clean URL Variables
+We have a system in place to clean the urls, for a couple of reasons:
+1) They can become very long, and very messy. We prefer them tidy.
+2) We do not want to spoil the surprise of the personalisation
+3) If your viewers share the presentation, we don't want them to share it with their details.
+4) We don't want to pass Personal Identifiable Information in any other way
+
+We cannot, however, clear all URL Variables, as many systems depend on them to operate (Like Google Analytics and their `utm` paramters). We therefore only clean our `Shared Variables`. This are the Varaibles in our case that include PII. 
+
+If you want to clean your own variables from the URL too, you can do this with a script attribute:
+`<script data-clean="shoesize,height,favorite_color" src="https://api.spooo.ky/bit.js?api_key=XXX"></script>`
+So: `data-clean="[comma_separated_variables]"` attribute works as var cleaner.
+
+# Spoooky Cookies, Sessions and Retargeting.
+We use cookies to identify repetitive viewers, to make the personalised experience as seamless as possible. Cookies can be linked and merged based on `Email`, `Linkedin` and `Facebook` data. This allows us to provide cross-browser and cross-device tracking, for an optimal Dynamic Ad Retargeting experience.
+
+To stop Spoooky Retargeting a user has to add `?doNotTrack=true` to *any* URL using the Spoooky Service, and hit _ENTER_
+
+For more info check out our [cookie](https://spooo.ky/cookie-policy) and [privacy](https://spooo.ky/privacy-policy) policies
