@@ -225,3 +225,7 @@ We use cookies to identify repetitive viewers, to make the personalised experien
 To stop Spoooky Retargeting a user has to add `?doNotTrack=true` to *any* URL using the Spoooky Service, and hit _ENTER_
 
 For more info check out our [cookie](https://spooo.ky/cookie-policy) and [privacy](https://spooo.ky/privacy-policy) policies
+
+# Done-For-You Personalised Marketing and Advertising Solution
+Is the implementation of this system over your head. Please contact [BrandPixel.io](https://brandpixel.io) for a full-fledged professional solution of creating and/or personalising your marketing creatives.
+
