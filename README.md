@@ -39,63 +39,90 @@ We would place the variables in the content like:
 
 We can also use fallbacks, if variables are not available, to avoid blanks.:
 `{{website || company || "some text"}}`
+
 > this will use the value for `website`, unless its emtpy, then it will use `company`, unless its empty, then it will use `some text`.
+
 NOTE: if you want to use text instead of a variable, you have to put it in between `"quotes"`
 
 To keep a proper read and flow of context, you might want to pre/post fixes to the variables.
 `{{"prefix" + website }}`
 
 To combine fallbacks with pre/post fixes, you need to use IF statements:
+
 `{{fname ? ("Dear" + fname) : "Hey There"}}`
+
 This works like:
+
 `{{ if this ? then this : else this }}`
+
 > these statements can be nested, and you can make them as complex as you like.
 
 You can also use the `mobile` parameter, to show different content on mobiles or desktops.
+
 `{{mobile ? "swipe up" : "press space"}}`
+
 This works like:
+
 `{{if mobile ? then this : else this}}`
 
 ## Simple Title Animations
 Rotator allows you to change a line of text. A nice usecase is the page title (remember to use the `og:title` to get readable rich previews. the final number is the time between text changes. Add a `,` between each sentence.
+
 `{{rotate (fname + " Lets Talk", "Personalised Marketing", "For " + ( company || website || "Your Company"), 2)}}`
 
 You can also add animated icons:
+
 `{{marquee ()}}`
 
 And change marquee symbol and max amount:
+
 `{{marquee ("*", 3)}}`
+
 `{{marquee ("@", 5)}}`
 
 ## Dates
 To give your content an up-to-date touch, you can use the current data including offsets.
+
 for the current date:   `{{date ()}}`
+
 for tomorrow            `{{date (1)}}`
+
 for next week           `{{date (7)}}`
 
 You can also exclude business days from the count, like:
+
 `{{date (2, 'Saturday, Sunday')}}`
+
 > on a Friday, this would print Tuesdays date.
 
 If you would like to make dates persistent, from the first time someone saw the date, use:
+
 `{{persistentDate (10)}}`
+
 `{{persistantDate (7, 'Saturday, Sunday')}}`
+
 > visiting the content days later will not update the date.
 
 ## Countdowns
 To add a sense of urgency to your content, you can use countdowns in the same way.
+
 `{{countdown (1, 'hour')}}`
+
 `{{countdown (1, 'day') || 'Time is Up'}}`
+
 > you can define the fallback text to show when the countdown reaches 0.
 
 Countdown skipping non-business days <br>
+
 `{{countdown (7, 'day', 'Saturday, Sunday') || 'time is up'}}<br>`
 
 To make a countdown continue from the first visit, you use the persistent variant:
+
 `{{persistentCountdown (1, 'day') || 'Offer Expired'}}`
 
 ## Advanced Variables
 When you create some more complex nested statements, you can create your own combined variables for repetitive use.
+
 `{{client = website || (company ? company + "'s website" : "your website")}}`
 
 The nest time you can then just use `{{client}}` to get the same result. 
@@ -104,12 +131,15 @@ The nest time you can then just use `{{client}}` to get the same result.
 You are not limited to using the variables in content only, you can also use them to customise redirect, iframes, and alike.
 
 For example, you can include a custom iframe of the recipients website:
+
 `<iframe src="https://{{website}}" height=480 width=640></iframe>`
 
 You can include a custom map of the recipients city:
+
 `<iframe src="https://maps.google.com/maps?q={{city||"Amsterdam"}}&z=12&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>`
 
 Or you can link your CTA button to a page depending on whether the countdown has run out already:
+
 `https://yourwebsite.com/{{countdown (1, "day") ? "ealy-bird-offer" : "signup"}}`
 
 # System Flags, Defaults & Hierarchy.
@@ -119,41 +149,55 @@ To make Spoooky function we have chosen to use defaults so you get started strai
 In compliance with GDPR we need to get the viewers consent to share with you their personal information. Hence we use a popup where they can submit, update & confirm their data. We have several options to invoke this popup, and alter its options.
 
 auth_when=
+
 never = the popup will show never (mainly for testing your content personalisation)
+
 always = the popup will show always
+
 nodata = the popup will show when there is no data (anonymous users only)
+
 once = the popup will show only the first time (like a cookie consent notice)
+
 nosocial = (default) the popup will show when there is no previous social login.
 
 auth_login=
+
 F = Facebook
+
 L = Linkedin
+
 E = Email
+
 > and combination can be used: `LF`, `EL`, `LFE` (default), `L`, `F`, `FE`, `FL`.
  
 auth_skip=
+
 yes = Shows a close button, and allows to continue to the content without sharing details. (default)
+
 no = Requires sharing details to continue to the presentation.
  
 ## Popup Styling
 To make the popup match your brand, you can customise it using the following variables:
-auth_logo=
-> change the logo shown at the top (url)
-auth_header=
-> change the popup title
-auth_icon=
-> change the button icon (url)
-auth_cookie=
-> change the link to your privacy policy
-auth_privacy=
-> change the link to your privacy policy
-auth_color=
-> change the default red color to one matching your brand (hex)
+
+auth_logo= change the logo shown at the top (url)
+
+auth_header= change the popup title (text)
+
+auth_icon= change the button icon (url)
+
+auth_cookie= change the link to your privacy policy (url)
+
+auth_privacy= change the link to your privacy policy (url)
+
+auth_color= change the default red color to one matching your brand (hex)
 
 ## (Hardcoded) Flags, Vars and the Hierarchy
 Besides adding Flags and Vars via the URL, you can also add them as script attributes.
+
 `<script src=“https://api.spooo.ky/bit.js?api_key=XXX” data-set-auth_skip="no" data-set-auth_login="FL"></script>`
+
 > This way you can prevent URLs becoming very, very, very long. :)
+
 So: `data-set-[any_var_name]="any_value"` attribute works as default var setter
 
 When both URL variables and script attributes are used, keep it mind:
@@ -161,6 +205,7 @@ When both URL variables and script attributes are used, keep it mind:
 
 ## Clean URL Variables
 We have a system in place to clean the urls, for a couple of reasons:
+
 1) They can become very long, and very messy. We prefer them tidy.
 2) We do not want to spoil the surprise of the personalisation
 3) If your viewers share the presentation, we don't want them to share it with their details.
@@ -169,7 +214,9 @@ We have a system in place to clean the urls, for a couple of reasons:
 We cannot, however, clear all URL Variables, as many systems depend on them to operate (Like Google Analytics and their `utm` paramters). We therefore only clean our `Shared Variables`. This are the Varaibles in our case that include PII. 
 
 If you want to clean your own variables from the URL too, you can do this with a script attribute:
+
 `<script data-clean="shoesize,height,favorite_color" src="https://api.spooo.ky/bit.js?api_key=XXX"></script>`
+
 So: `data-clean="[comma_separated_variables]"` attribute works as var cleaner.
 
 # Spoooky Cookies, Sessions and Retargeting.
