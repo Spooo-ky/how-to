@@ -144,6 +144,8 @@ Or you can link your CTA button to a page depending on whether the countdown has
 
 `https://yourwebsite.com/{{countdown (1, "day") ? "ealy-bird-offer" : "signup"}}`
 
+For testing, check out [this playground](https://jsfiddle.net/hopla_tools/0zLu7rya/)
+
 # System Flags, Defaults & Hierarchy.
 To make Spoooky function we have chosen to use defaults so you get started straight away without having to configure everything. The following are some system flags we use to control Spoooky behaviour.
 
@@ -225,8 +227,6 @@ So: `data-clean="[comma_separated_variables]"` attribute works as var cleaner.
 Just add the script, including your api_key, in the <head> of your website. 
  
 `<script src="https://api.spooo.ky/bit.js?XXX”</script>`
-
-For testing, check out [this playground](https://jsfiddle.net/hopla_tools/0zLu7rya/)
 
 # Spoooky Cookies, Sessions and Retargeting.
 We use cookies to identify repetitive viewers, to make the personalised experience as seamless as possible. Cookies can be linked and merged based on `Email`, `Linkedin` and `Facebook` data. This allows us to provide cross-browser and cross-device tracking, for an optimal Dynamic Ad Retargeting experience.
