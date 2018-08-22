@@ -25,6 +25,8 @@ Shared variables is the information we deem you are interested in to know about 
 
 All other variables you add by the means of URL Variables will be used in the Personalisation of the content, but will not we incldued in the shared info.
 
+NOTE: all Flags and Variables should be url encoded.
+
 # Sample Markup
 To identify variables we enclose them with `{{ }}` so the for the url: 
 
@@ -218,6 +220,13 @@ If you want to clean your own variables from the URL too, you can do this with a
 `<script data-clean="shoesize,height,favorite_color" src="https://api.spooo.ky/bit.js?api_key=XXX"></script>`
 
 So: `data-clean="[comma_separated_variables]"` attribute works as var cleaner.
+
+# How to Install Spoooky
+Just add the script, including your api_key, in the <head> of your website. 
+ 
+`<script src="https://api.spooo.ky/bit.js?XXX”</script>`
+
+For testing, check out [this playground](https://jsfiddle.net/hopla_tools/0zLu7rya/)
 
 # Spoooky Cookies, Sessions and Retargeting.
 We use cookies to identify repetitive viewers, to make the personalised experience as seamless as possible. Cookies can be linked and merged based on `Email`, `Linkedin` and `Facebook` data. This allows us to provide cross-browser and cross-device tracking, for an optimal Dynamic Ad Retargeting experience.
