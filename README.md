@@ -198,7 +198,7 @@ auth_color= change the default red color to one matching your brand (hex)
 ## (Hardcoded) Flags, Vars and the Hierarchy
 Besides adding Flags and Vars via the URL, you can also add them as script attributes.
 
-`<script src=“https://api.spooo.ky/bit.js?api_key=XXX” data-set-auth_skip="no" data-set-auth_login="FL"></script>`
+`<script src="https://api.spooo.ky/bit.js?api_key=XXX" data-set-auth_skip="no" data-set-auth_login="FL"></script>`
 
 > This way you can prevent URLs becoming very, very, very long. :)
 
@@ -226,7 +226,7 @@ So: `data-clean="[comma_separated_variables]"` attribute works as var cleaner.
 # How to Install Spoooky
 Just add the script, including your api_key, in the `<head>` of your HMTL content. 
  
-`<script src="https://api.spooo.ky/bit.js?XXX”</script>`
+`<script src="https://api.spooo.ky/bit.js?XXX"</script>`
 
 # Spoooky Cookies, Sessions and Retargeting.
 We use cookies to identify repetitive viewers, to make the personalised experience as seamless as possible. Cookies can be linked and merged based on `Email`, `Linkedin` and `Facebook` data. This allows us to provide cross-browser and cross-device tracking, for an optimal Dynamic Ad Retargeting experience.
