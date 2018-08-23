@@ -1,7 +1,7 @@
 # Spoooky Basics
 Spoooky is a Instant HTML Personalisation Service. It allows to create content very similar to what `Mail Merge` does with email, but with Presentations, Websites, Landing Pages, Videos & Ads. It then shares with you a summary of all the viewers that have accessed your content for marketing and follow up purposes.
 
-It essentially replaces {{parameters}} placed in the HTML content, with personalised variables you feed it. 
+It essentially replaces `{{parameters}}` placed in the HTML content, with personalised variables you feed it. 
 
 ## URL Variables
 The easiest and most dynamic way to feeding Spoooky with dynamic content is the use of URL Variables. IF you are familiar with Google Analytics Tracking links `?utm_campaign=something&utm_medium=somethingElse`, this will be very natural to you. You can ammend any custom variable to the urls you send to your correspondents `?shoesize=44&height=194cm&favorite_color=yellow` and use them to customise the content they see. Spoooky variables and other variables play along nicely.
@@ -172,7 +172,7 @@ L = Linkedin
 
 E = Email
 
-> and combination can be used: `LF`, `EL`, `LFE` (default), `L`, `F`, `FE`, `FL`.
+> any combination can be used: `LF`, `EL`, `LFE` (default), `L`, `F`, `FE`, `FL`.
  
 auth_skip=
 
@@ -215,7 +215,7 @@ We have a system in place to clean the urls, for a couple of reasons:
 3) If your viewers share the presentation, we don't want them to share it with their details.
 4) We don't want to pass Personal Identifiable Information in any other way
 
-We cannot, however, clear all URL Variables, as many systems depend on them to operate (Like Google Analytics and their `utm` paramters). We therefore only clean our `Shared Variables`. This are the Varaibles in our case that include PII. 
+We cannot, however, clear all URL Variables, as many systems depend on them to operate (Like Google Analytics and their `utm_*` paramters). We therefore only clean our `Shared Variables`. This are the Varaibles in our case that include PII. 
 
 If you want to clean your own variables from the URL too, you can do this with a script attribute:
 
@@ -224,14 +224,14 @@ If you want to clean your own variables from the URL too, you can do this with a
 So: `data-clean="[comma_separated_variables]"` attribute works as var cleaner.
 
 # How to Install Spoooky
-Just add the script, including your api_key, in the <head> of your website. 
+Just add the script, including your api_key, in the `<head>` of your HMTL content. 
  
 `<script src="https://api.spooo.ky/bit.js?XXX”</script>`
 
 # Spoooky Cookies, Sessions and Retargeting.
 We use cookies to identify repetitive viewers, to make the personalised experience as seamless as possible. Cookies can be linked and merged based on `Email`, `Linkedin` and `Facebook` data. This allows us to provide cross-browser and cross-device tracking, for an optimal Dynamic Ad Retargeting experience.
 
-To stop Spoooky Retargeting a user has to add `?doNotTrack=true` to *any* URL using the Spoooky Service, and hit _ENTER_
+To stop Spoooky Retargeting, a user has to add `?doNotTrack=true` to *any* URL using the Spoooky Service, and hit _ENTER_. This will clear all the cookies, pixels and sessions we use, and all linked data.
 
 For more info check out our [cookie](https://spooo.ky/cookie-policy) and [privacy](https://spooo.ky/privacy-policy) policies
 
